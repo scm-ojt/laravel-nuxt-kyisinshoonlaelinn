@@ -1,0 +1,17 @@
+{
+  "Navbar": {
+    "description": "Auto imported from components/navbar.vue"
+  },
+  "NuxtLogo": {
+    "description": "Auto imported from components/NuxtLogo.vue"
+  },
+  "Pagination": {
+    "description": "Auto imported from components/pagination.vue"
+  },
+  "PostList": {
+    "description": "Auto imported from components/postList.vue"
+  },
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
+  }
+}
