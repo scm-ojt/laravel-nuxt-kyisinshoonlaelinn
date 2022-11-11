@@ -1,9 +1,9 @@
 [
   {
-    "name": "auth-login",
-    "path": "/auth/login",
-    "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\auth\\\\login.vue",
-    "chunkName": "pages/auth/login"
+    "name": "login",
+    "path": "/login",
+    "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\login.vue",
+    "chunkName": "pages/login"
   },
   {
     "name": "auth-register",
@@ -16,6 +16,12 @@
     "path": "/post/create",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\post\\\\create.vue",
     "chunkName": "pages/post/create"
+  },
+  {
+    "name": "post-list",
+    "path": "/post/list",
+    "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\post\\\\list.vue",
+    "chunkName": "pages/post/list"
   },
   {
     "name": "post-edit-id",

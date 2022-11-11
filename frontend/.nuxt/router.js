@@ -4,9 +4,10 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _f3b30f8c = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _8f5ef1bc = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
 const _15dc033c = () => interopDefault(import('..\\pages\\auth\\register.vue' /* webpackChunkName: "pages/auth/register" */))
 const _63be20f3 = () => interopDefault(import('..\\pages\\post\\create.vue' /* webpackChunkName: "pages/post/create" */))
+const _31104956 = () => interopDefault(import('..\\pages\\post\\list.vue' /* webpackChunkName: "pages/post/list" */))
 const _e74fc56e = () => interopDefault(import('..\\pages\\post\\edit\\_id.vue' /* webpackChunkName: "pages/post/edit/_id" */))
 const _22ae37ea = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -22,9 +23,9 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/auth/login",
-    component: _f3b30f8c,
-    name: "auth-login"
+    path: "/login",
+    component: _8f5ef1bc,
+    name: "login"
   }, {
     path: "/auth/register",
     component: _15dc033c,
@@ -33,6 +34,10 @@ export const routerOptions = {
     path: "/post/create",
     component: _63be20f3,
     name: "post-create"
+  }, {
+    path: "/post/list",
+    component: _31104956,
+    name: "post-list"
   }, {
     path: "/post/edit/:id?",
     component: _e74fc56e,

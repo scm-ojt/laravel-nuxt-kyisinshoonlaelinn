@@ -16,6 +16,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_plugin_60296024 from 'nuxt_plugin_plugin_60296024' // Source: .\\components\\plugin.js (mode: 'all')
 import nuxt_plugin_bootstrapvue_13181380 from 'nuxt_plugin_bootstrapvue_13181380' // Source: .\\bootstrap-vue.js (mode: 'all')
 import nuxt_plugin_axios_1a18b911 from 'nuxt_plugin_axios_1a18b911' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_vspagination_51fafa33 from 'nuxt_plugin_vspagination_51fafa33' // Source: ..\\plugins\\vs-pagination (mode: 'client')
 import nuxt_plugin_fontawesome_b8db358e from 'nuxt_plugin_fontawesome_b8db358e' // Source: ..\\plugins\\fontawesome.js (mode: 'all')
 import nuxt_plugin_auth_cd91ec02 from 'nuxt_plugin_auth_cd91ec02' // Source: .\\auth.js (mode: 'all')
 
@@ -221,6 +222,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_axios_1a18b911 === 'function') {
     await nuxt_plugin_axios_1a18b911(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vspagination_51fafa33 === 'function') {
+    await nuxt_plugin_vspagination_51fafa33(app.context, inject)
   }
 
   if (typeof nuxt_plugin_fontawesome_b8db358e === 'function') {

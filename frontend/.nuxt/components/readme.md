@@ -9,5 +9,4 @@ You can directly use them in pages and other components without the need to impo
 - `<Navbar>` | `<navbar>` (components/navbar.vue)
 - `<NuxtLogo>` | `<nuxt-logo>` (components/NuxtLogo.vue)
 - `<Pagination>` | `<pagination>` (components/pagination.vue)
-- `<PostList>` | `<post-list>` (components/postList.vue)
 - `<Tutorial>` | `<tutorial>` (components/Tutorial.vue)

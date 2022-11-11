@@ -1,21 +1,26 @@
 <template>
     <div class="container">
-        <h3 class="text-center">Edit Post</h3>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">Edit Post</div>
+          <div class="card-body">
                 <form @submit.prevent="updatePost" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Title</label>
-                        <input name="title" type="text" class="form-control" v-model="post.title" @change="textChange" required>
+                        <input name="title" type="text" class="form-control" v-model="post.title" @change="textChange" required> <br>
+                        <label>Image</label>
+                        <img :src="`http://localhost:8000/storage/` + post.image" class="m-4 mt-3 border border-secondary" 
+                      alt=""
+                      width="150px"
+                      height="150px"
+                    />
                         <input type="file" name="file" class="form-control" v-on:change="onChange">
                     </div>
-                    <!-- <div class="form-group">
-                        <label>Detail</label>
-                        <input type="text" class="form-control" v-model="post.image">
-                    </div> -->
                     <button type="submit" class="btn btn-primary">Update</button>
+                    <NuxtLink :to="`/post/list`" class="btn btn-secondary">Back</NuxtLink>
                 </form>
-            </div>
+            </div></div></div>
         </div>
     </div>
 </template>
@@ -52,7 +57,7 @@
                 this.$axios
                     .post(`/api/post/update/${this.$route.params.id}`, data)
                     .then((res) => {
-                        this.$router.push({ name: 'index' });
+                        this.$router.push({ name: 'post-list' });
                     });
             },
             

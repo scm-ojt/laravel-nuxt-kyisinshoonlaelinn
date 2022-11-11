@@ -24,8 +24,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@plugins/laravel-vue-pagination',
-    '~/plugins/fontawesome.js'
+    { src: '~plugins/vs-pagination', mode: 'client' },
+    { src: '~/plugins/fontawesome.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -67,6 +67,9 @@ export default {
         }
       }
     }
+  },
+  router: {
+    middleware: ['auth']
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

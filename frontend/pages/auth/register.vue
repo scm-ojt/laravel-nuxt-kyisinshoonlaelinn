@@ -86,7 +86,7 @@ export default {
         this.$axios.post('/api/register', this.form).then((res) => {
           this.$auth.loginWith('laravelSanctum', { data: this.form })
           this.$router.push({
-            path: '/',
+            path: '/post/list',
           })
         })
       } catch (err) {

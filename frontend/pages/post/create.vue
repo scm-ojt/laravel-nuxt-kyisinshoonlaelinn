@@ -60,11 +60,6 @@ export default {
     formSubmit(e) {
       e.preventDefault()
       let existingObj = this
-      /* const config = {
-                    headers: {
-                        'content-type': 'multipart/form-data'
-                    }
-                } */
       let data = new FormData()
       data.append('file', this.file)
       data.append('title', this.title)
@@ -77,64 +72,8 @@ export default {
         .catch(function (err) {
           existingObj.errors = err.response.data.errors
         })
+        this.$router.push({ name: 'post-list' });
     },
   },
 }
 </script>
-<!-- <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Laravel Vue JS File Upload Demo</div>
-                    <div class="card-body">
-                        <div v-if="success.value== true" class="alert alert-success">
-                            {{success}}
-                        </div>
-                        <form @submit="formSubmit" enctype="multipart/form-data">
-                            <input type="file" class="form-control" v-on:change="onChange">
-                            <button class="btn btn-primary btn-block">Upload</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-<script>
-    import {ref} from 'vue'
-    export default {
-        setup() {
-            const file = ref('')
-            const success = ref('false')
-            const onChange = (e)=> {
-                file.value = e.target.files[0];
-            }
-
-            const formSubmit = (e) => {
-                e.preventDefault();
-                const config = {
-                    headers: {
-                        'content-type': 'multipart/form-data'
-                    }
-                }
-                let data = new FormData();
-                data.append('file', file.value);
-                console.log(data);
-                this.axios.post('/api/post/create', data, config)
-                    .then(function (res) {
-                        success.value = res.data.success;
-                    })
-                    .catch(function (err) {
-                        console.log(err)
-                        output = err;
-                    });
-            }
-            return {
-                onChange,
-                formSubmit,
-                success 
-            }
-        }
-    }
-    </script> -->

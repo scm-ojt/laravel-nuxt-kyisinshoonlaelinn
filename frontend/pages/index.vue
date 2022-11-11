@@ -1,6 +1,6 @@
 <template>
   <!-- <Tutorial /> -->
-  <postList />
+  <p> Shop With Me! </p>
 </template>
 
 <script>

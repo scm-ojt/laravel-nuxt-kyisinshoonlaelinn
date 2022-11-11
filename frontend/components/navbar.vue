@@ -1,54 +1,48 @@
 <template>
-<div class=" flex justify-between items-center my-10">
-    <nuxt-link to="/" class=" text-2xl font-semibold">
-      Laranuxt Aut
-    </nuxt-link>
-    <!-- logo -->
-    <nav class=" flex space-x-10" v-if="!this.$auth.loggedIn">
-      <nuxt-link
-        class=" font-bold text-base uppercase"
-        :to="{ name: 'auth-login' }"
+  <div class="mb-5">
+  <b-navbar toggleable="lg" type="dark" variant="secondary">
+    <b-navbar-brand href="/">NavBar</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav v-if="!this.$auth.loggedIn">
+        <nuxt-link
+        class=" font-bold text-base uppercase text-white px-4"
+        :to="{ name: 'login' }"
         >Login</nuxt-link
-      >
+      > 
       <nuxt-link
-        class=" font-bold text-base uppercase"
+        class=" font-bold text-base uppercase text-white"
         :to="{ name: 'auth-register' }"
         >Register</nuxt-link
       >
-    </nav>
-    <nav class=" flex space-x-10" v-else>
-      <div> Username - {{this.$auth.user.name}}</div>
-      
-      <div class="flex space-x-2 items-center">
+      </b-navbar-nav>
 
-      </div>
-      <button @click="logout" class="font-bold text-base uppercase">
+      <b-navbar-nav v-else>
+        <a href="#" @click="logout" class="font-bold text-base uppercase mx-4 text-white">
         Logout
-      </button>
-    </nav>
-  </div>
+        </a>
+        <div class="text-white"> {{this.$auth.user.name}}</div>
+      
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
+</template>
+
 </template>
 <script>
   export default {
-    middleware: 'auth',
+    
     methods: {
     async logout() {
       this.$nuxt.$loading.start();
       this.$auth.logout();
       this.$nuxt.$loading.finish();
-      this.$router.push({name: 'auth-login'});
+      this.$router.push('/login');
     }
-   /*  methods: {
-      logout() {
-        this.$axios.$post('/api/logout')
-          .then(resp => {
-            this.$store.dispatch('logout');
-            this.$router.push('/');
-          })
-          .catch(errors => {
-            console.dir(errors);
-          });
-      }*/
+
     } 
   }
 </script>
