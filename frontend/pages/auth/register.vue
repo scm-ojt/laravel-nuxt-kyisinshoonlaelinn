@@ -1,17 +1,6 @@
 <template>
   <div class="container col-md-4 mt-5">
     <b-card mt-3 header="Register">
-      <div
-        v-if="errors != ''"
-        class="bg-red py-1 px-4 pr-0 rounded font-bold mb-4 shadow-lg"
-        style="color: red"
-      >
-        <div v-for="(v, k) in errors" :key="k">
-          <p v-for="error in v" :key="error" class="text-sm pt-2">
-            {{ error }}
-          </p>
-        </div>
-      </div>
       <b-form @submit.prevent="register" @reset.prevent="onReset">
         <b-form-group
           id="input-group-1"
@@ -25,6 +14,11 @@
             name="email"
             placeholder="Enter email"
           ></b-form-input>
+          <small
+            v-if="this.error.email"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.email"
+          />
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
@@ -35,6 +29,11 @@
             name="name"
             placeholder="Enter name"
           ></b-form-input>
+          <small
+            v-if="this.error.name"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.name"
+          />
         </b-form-group>
 
         <b-form-group label="Password:" label-for="input-3">
@@ -44,6 +43,11 @@
             type="password"
             placeholder="Enter password"
           ></b-form-input>
+          <small
+            v-if="this.error.password"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.password"
+          />
         </b-form-group>
 
         <b-form-group label="Confirm Password:">
@@ -53,6 +57,11 @@
             name="password_confirmation"
             placeholder="Enter email"
           ></b-form-input>
+          <small
+            v-if="this.error.password_confirmation"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.password_confirmation"
+          />
         </b-form-group>
 
         <b-button type="submit" variant="primary">Submit</b-button>
@@ -74,7 +83,12 @@ export default {
         password_confirmation: null,
       },
       show: true,
-      errors: [],
+      error: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+      },
     }
   },
   mounted() {
@@ -82,17 +96,30 @@ export default {
   },
   methods: {
     register() {
-      try {
-        this.$axios.post('/api/register', this.form).then((res) => {
+    
+        this.$axios.post('/api/register', this.form)
+        .then((res) => {
           this.$auth.loginWith('laravelSanctum', { data: this.form })
           this.$router.push({
             path: '/post/list',
           })
         })
-      } catch (err) {
-        console.log(err);
-        //this.errors = err.response.data.errors
-      }
+      .catch ((error) => {
+        console.log(error);
+        error.response.data.errors.email
+          ? (this.error.email = error.response.data.errors.email[0])
+          : (this.error.email = '')
+        error.response.data.errors.name
+          ? (this.error.name = error.response.data.errors.name[0])
+          : (this.error.name = '')
+        error.response.data.errors.password
+          ? (this.error.password = error.response.data.errors.password[0])
+          : (this.error.password = '')
+        error.response.data.errors.password_confirmation
+          ? (this.error.password_confirmation =
+              error.response.data.errors.password_confirmation[0])
+          : (this.error.password_confirmation = '')
+      })
     },
     onReset(event) {
       event.preventDefault()

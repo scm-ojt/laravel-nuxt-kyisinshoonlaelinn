@@ -8,16 +8,6 @@
             <div v-if="success != ''" class="alert alert-success">
               {{ success }}
             </div>
-            <div
-              v-if="errors != ''"
-              class="bg-red py-1 px-4 pr-0 rounded font-bold mb-4 shadow-lg" style = "color: red;"
-            >
-              <div v-for="(v, k) in errors" :key="k">
-                <p v-for="error in v" :key="error" class="text-sm pt-2">
-                  {{ error }}
-                </p>
-              </div>
-            </div>
             <form @submit="formSubmit" enctype="multipart/form-data">
               <label>Title</label>
               <input
@@ -25,11 +15,17 @@
                 name="title"
                 @change="textChange"
                 class="form-control"
-              /> <br>
+              />
+              <small
+            v-if="this.errors.title"
+            class="text-danger font-weight-bolder"
+            v-html="this.errors.title"
+          />
+               <br>
               <input
                 type="file"
-                name="image"
-                class="form-control"
+                name="image" accept="image/*"
+                class="form-control mt-2"
                 v-on:change="onChange"
               /> <br>
               <button class="btn btn-primary btn-block">Upload</button>
@@ -68,11 +64,15 @@ export default {
         .then(function (res) {
           existingObj.success = res.data.success
           existingObj.errors = []
+          this.$router.push({
+            name: 'post-list'
+          })
         })
         .catch(function (err) {
+          console.log(err.response.data)
           existingObj.errors = err.response.data.errors
         })
-        this.$router.push({ name: 'post-list' });
+        
     },
   },
 }

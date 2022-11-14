@@ -5,9 +5,6 @@
   "NuxtLogo": {
     "description": "Auto imported from components/NuxtLogo.vue"
   },
-  "Pagination": {
-    "description": "Auto imported from components/pagination.vue"
-  },
   "Tutorial": {
     "description": "Auto imported from components/Tutorial.vue"
   }

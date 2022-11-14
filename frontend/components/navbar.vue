@@ -24,6 +24,11 @@
         Logout
         </a>
         <div class="text-white"> {{this.$auth.user.name}}</div>
+        <nuxt-link
+        class=" font-bold text-base uppercase text-white mx-4"
+        :to="{ name: 'post-list' }"
+        >Posts</nuxt-link
+      >
       
       </b-navbar-nav>
     </b-collapse>
@@ -40,7 +45,7 @@
       this.$nuxt.$loading.start();
       this.$auth.logout();
       this.$nuxt.$loading.finish();
-      this.$router.push('/login');
+      this.$router.push({ name: 'login' });
     }
 
     } 

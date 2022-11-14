@@ -1,17 +1,6 @@
 <template>
   <div class="container col-md-4 mt-5">
     <b-card mt-3 header="Login">
-      <div
-        v-if="errors != ''"
-        class="bg-red py-1 px-4 pr-0 rounded font-bold mb-4 shadow-lg"
-        style="color: red"
-      >
-        <div v-for="(v, k) in errors" :key="k">
-          <p v-for="error in v" :key="error" class="text-sm pt-2">
-            {{ error }}
-          </p>
-        </div>
-      </div>
       <b-form @submit.prevent="login">
         <b-form-group
           id="input-group-1"
@@ -25,6 +14,11 @@
             name="email"
             placeholder="Enter email"
           ></b-form-input>
+          <small
+            v-if="this.error.email"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.email"
+          />
         </b-form-group>
 
         <b-form-group label="Password:" label-for="input-3">
@@ -34,6 +28,11 @@
             type="password"
             placeholder="Enter password"
           ></b-form-input>
+          <small
+            v-if="this.error.password"
+            class="text-danger font-weight-bolder"
+            v-html="this.error.password"
+          />
         </b-form-group>
 
         <b-button type="submit" variant="primary">Login</b-button>
@@ -48,7 +47,10 @@ export default {
     return {
       email: '',
       password: '',
-      errors: [],
+      error: {
+        email: '',
+        password: '',
+      },
     }
   },
   methods: {
@@ -61,14 +63,18 @@ export default {
             password: this.password,
           },
         })
-        .then((response) => console.log(response))
-         /* .catch(function (error) {
-          console.log("tdfd"+error.response.data);
-          // this.errors = error.response.data.errors
-        }) */
-        .catch(error=>console.log(error));
-
-        this.$router.push('/post/list')
+        .then((response) => {
+          console.log(response)
+          this.$router.push('post/list')
+        })
+        .catch((error) => {
+          error.response.data.errors.email
+            ? (this.error.email = error.response.data.errors.email[0])
+            : (this.error.email = '')
+          error.response.data.errors.password
+            ? (this.error.password = error.response.data.errors.password[0])
+            : (this.error.password = '')
+        })
     },
   },
 }

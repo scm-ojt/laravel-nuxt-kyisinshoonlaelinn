@@ -3,36 +3,42 @@
     "name": "login",
     "path": "/login",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\login.vue",
-    "chunkName": "pages/login"
+    "chunkName": "pages/login",
+    "_name": "_8f5ef1bc"
   },
   {
     "name": "auth-register",
     "path": "/auth/register",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\auth\\\\register.vue",
-    "chunkName": "pages/auth/register"
+    "chunkName": "pages/auth/register",
+    "_name": "_15dc033c"
   },
   {
     "name": "post-create",
     "path": "/post/create",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\post\\\\create.vue",
-    "chunkName": "pages/post/create"
+    "chunkName": "pages/post/create",
+    "_name": "_63be20f3"
   },
   {
     "name": "post-list",
     "path": "/post/list",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\post\\\\list.vue",
-    "chunkName": "pages/post/list"
+    "chunkName": "pages/post/list",
+    "_name": "_31104956"
   },
   {
     "name": "post-edit-id",
     "path": "/post/edit/:id?",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\post\\\\edit\\\\_id.vue",
-    "chunkName": "pages/post/edit/_id"
+    "chunkName": "pages/post/edit/_id",
+    "_name": "_e74fc56e"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\Nuxt + Laravel\\\\frontend\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_22ae37ea"
   }
 ]
